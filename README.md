@@ -1,73 +1,60 @@
-# Welcome to your Lovable project
+# 💕 Valentine's Day Page
 
-## Project info
+A personalized Valentine's Day website for your special someone. Built with React + Vite + Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 🚀 Quick Start
 
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The site works immediately with placeholder content. Customize it by editing `src/lib/config.ts`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📸 Adding Your Photos
 
-**Use GitHub Codespaces**
+1. Place your photos in `src/assets/` (e.g., `src/assets/photo1.jpg`)
+2. Open `src/lib/config.ts`
+3. Update the `photos` array — set `placeholder: false` and provide the import path:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```ts
+photos: [
+  { src: "/src/assets/photo1.jpg", caption: "Our first date ❤️", placeholder: false },
+  // ...
+],
+```
 
-## What technologies are used for this project?
+## 🎵 Setting Up the Song
 
-This project is built with:
+### YouTube Embed (Default)
+Update `youtubeVideoId` in `src/lib/config.ts` with any YouTube video ID.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+**⚠️ Autoplay:** Audio plays only after user clicks Play (browser security requirement).  
+**⚠️ Copyright:** Uses YouTube's official embed player. Some videos may restrict embedding.
 
-## How can I deploy this project?
+### Local MP3 Alternative
+1. Place MP3 in `public/assets/our-song.mp3`
+2. Set `useLocalAudio: true` in config
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## ✏️ Personalizing
 
-## Can I connect a custom domain to my Lovable project?
+Edit `src/lib/config.ts` for names, year, tagline.  
+Edit the love letter in `src/components/valentine/LoveLetter.tsx`.  
+Edit reasons in `src/components/valentine/ReasonsList.tsx`.
 
-Yes, you can!
+## 🌐 Deploy
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```bash
+npm run build
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Upload the `dist/` folder to any static host (Netlify, Vercel, GitHub Pages, etc.).
+
+## 📱 Features
+
+- ❤️ Mobile-first responsive design
+- 🖼️ Photo gallery with keyboard-accessible lightbox
+- 💌 Playful love letter with editable placeholders
+- 🎵 YouTube song player with floating hearts animation
+- 📝 Humorous "Reasons I'd Still Choose You" list
+- ♿ Semantic HTML, ARIA labels, keyboard navigation

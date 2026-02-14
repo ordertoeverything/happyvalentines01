@@ -1,12 +1,24 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useMemo } from "react";
+import HeroSection from "@/components/valentine/HeroSection";
+import PhotoGallery from "@/components/valentine/PhotoGallery";
+import LoveLetter from "@/components/valentine/LoveLetter";
+import SongPlayer from "@/components/valentine/SongPlayer";
+import ReasonsList from "@/components/valentine/ReasonsList";
+import FloatingHearts from "@/components/valentine/FloatingHearts";
+import ValentineFooter from "@/components/valentine/ValentineFooter";
 
 const Index = () => {
+  const { triggerHearts, HeartsOverlay } = useMemo(() => FloatingHearts(), []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <HeartsOverlay />
+      <HeroSection />
+      <PhotoGallery />
+      <LoveLetter />
+      <SongPlayer onPlay={triggerHearts} />
+      <ReasonsList />
+      <ValentineFooter />
     </div>
   );
 };
