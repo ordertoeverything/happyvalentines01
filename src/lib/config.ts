@@ -14,7 +14,7 @@ export const CONFIG = {
   // YouTube video config for "Our Song"
   songTitle: "The Sweetest Thing",
   songArtist: "U2",
-  youtubeVideoId: "5YXVMCHG-Nk", // Change this to your preferred video ID
+  youtubeVideoId: "5WybiA263bw", // U2 - Sweetest Thing (Official Music Video)
   useLocalAudio: false, // Set to true to use a local MP3 instead
   localAudioFile: "our-song.mp3", // Place MP3 in public/assets/
 
