@@ -20,12 +20,10 @@ export const CONFIG = {
 
   // Photo gallery — update these when you add real photos
   photos: [
-    { src: "", caption: "Our first date ❤️", placeholder: true },
-    { src: "", caption: "That trip we'll never forget", placeholder: true },
-    { src: "", caption: "Lazy Sunday mornings", placeholder: true },
-    { src: "", caption: "Dancing in the kitchen", placeholder: true },
-    { src: "", caption: "Adventure buddies", placeholder: true },
-    { src: "", caption: "You + Me = 🔥", placeholder: true },
+    { src: "", caption: "Photo 1", placeholder: true },
+    { src: "", caption: "Photo 2", placeholder: true },
+    { src: "", caption: "Photo 3", placeholder: true },
+    { src: "", caption: "Photo 4", placeholder: true },
   ],
 } as const;
 

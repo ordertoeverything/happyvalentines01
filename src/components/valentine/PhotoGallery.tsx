@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 import { CONFIG, PLACEHOLDER_GRADIENTS } from "@/lib/config";
-import { X, Camera } from "lucide-react";
+import { X } from "lucide-react";
 
 const PhotoGallery = () => {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -50,53 +50,20 @@ const PhotoGallery = () => {
           Every picture tells a story — and ours is my favorite
         </p>
 
-        {/* Hero photo area */}
-        <div
-          className="mt-10 flex aspect-video cursor-pointer items-center justify-center overflow-hidden rounded-2xl transition-transform hover:scale-[1.01]"
-          style={{ background: PLACEHOLDER_GRADIENTS[0] }}
-          onClick={() => openLightbox(0)}
-          role="button"
-          tabIndex={0}
-          aria-label={`View photo: ${CONFIG.photos[0]?.caption}`}
-          onKeyDown={(e) => e.key === "Enter" && openLightbox(0)}
-        >
-          {CONFIG.photos[0]?.placeholder ? (
-            <div className="flex flex-col items-center gap-3 text-primary-foreground/80">
-              <Camera className="h-12 w-12" />
-              <span className="font-body text-sm">Upload your hero photo</span>
-              <span className="font-display text-lg italic">
-                {CONFIG.photos[0].caption}
-              </span>
-            </div>
-          ) : (
-            <img
-              src={CONFIG.photos[0].src}
-              alt={CONFIG.photos[0].caption}
-              className="h-full w-full object-cover"
-              loading="lazy"
-            />
-          )}
-        </div>
-
-        {/* Grid */}
-        <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
-          {CONFIG.photos.slice(1).map((p, i) => (
+        {/* 2x2 Grid */}
+        <div className="mt-10 grid grid-cols-2 gap-4">
+          {CONFIG.photos.map((p, i) => (
             <div
               key={i}
               className="group relative flex aspect-square cursor-pointer items-center justify-center overflow-hidden rounded-xl transition-transform hover:scale-[1.03]"
-              style={{ background: PLACEHOLDER_GRADIENTS[i + 1] }}
-              onClick={() => openLightbox(i + 1)}
+              style={{ background: PLACEHOLDER_GRADIENTS[i] }}
+              onClick={() => openLightbox(i)}
               role="button"
               tabIndex={0}
               aria-label={`View photo: ${p.caption}`}
-              onKeyDown={(e) => e.key === "Enter" && openLightbox(i + 1)}
+              onKeyDown={(e) => e.key === "Enter" && openLightbox(i)}
             >
-              {p.placeholder ? (
-                <div className="flex flex-col items-center gap-2 px-3 text-center text-primary-foreground/80">
-                  <Camera className="h-8 w-8" />
-                  <span className="font-body text-xs">{p.caption}</span>
-                </div>
-              ) : (
+              {!p.placeholder && (
                 <img
                   src={p.src}
                   alt={p.caption}
@@ -104,11 +71,13 @@ const PhotoGallery = () => {
                   loading="lazy"
                 />
               )}
-              <div className="absolute inset-0 flex items-end bg-gradient-to-t from-foreground/40 to-transparent p-3 opacity-0 transition-opacity group-hover:opacity-100">
-                <span className="font-body text-xs text-primary-foreground">
-                  {p.caption}
-                </span>
-              </div>
+              {!p.placeholder && (
+                <div className="absolute inset-0 flex items-end bg-gradient-to-t from-foreground/40 to-transparent p-3 opacity-0 transition-opacity group-hover:opacity-100">
+                  <span className="font-body text-xs text-primary-foreground">
+                    {p.caption}
+                  </span>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -141,12 +110,7 @@ const PhotoGallery = () => {
                 minHeight: "300px",
               }}
             >
-              {photo.placeholder ? (
-                <div className="flex flex-col items-center gap-3 text-primary-foreground/80">
-                  <Camera className="h-16 w-16" />
-                  <span className="font-body">Upload your photo here</span>
-                </div>
-              ) : (
+              {!photo.placeholder && (
                 <img
                   src={photo.src}
                   alt={photo.caption}
